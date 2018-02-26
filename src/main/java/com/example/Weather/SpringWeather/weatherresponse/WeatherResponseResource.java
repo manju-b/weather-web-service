@@ -44,5 +44,11 @@ public class WeatherResponseResource {
 		this.name = name;
 	}
 	
+	public boolean isEmpty() {
+		if(description == null & speed == 0 & temp == 0 & name == null) {
+			return true;
+		}
+		return false;
+	}
 	
 }

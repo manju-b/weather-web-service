@@ -35,7 +35,12 @@ public class WeatherController {
 	public WeatherResponseResource getWeatherReport(@PathVariable("cityName") String cityName) {
 		
 	 	if(cityName.matches("[a-zA-Z]+")){
-	 		return weatherService.cityWeatherReport(cityName);
+	 		WeatherResponseResource response = weatherService.cityWeatherReport(cityName);
+	 		if(response.isEmpty()) {
+		 		throw new IllegalArgumentException("Please provide valid city name");
+	 		} else {
+	 			return response;
+	 		}
 	 	} else {
 	 		throw new IllegalArgumentException("Please provide valid city name");
 	 	}

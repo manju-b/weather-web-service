@@ -1,5 +1,7 @@
 package com.example.Weather.SpringWeather.weatherresponse;
 
+import org.springframework.util.ObjectUtils;
+
 public class WeatherResponseResource {
 
 	String description;
@@ -44,11 +46,12 @@ public class WeatherResponseResource {
 		this.name = name;
 	}
 	
-	public boolean isEmpty() {
-		if(description == null & speed == 0 & temp == 0 & name == null) {
-			return true;
+	public void validate() {
+		if(description != null || speed != 0 || temp != 0 || name != null) {
+			
+		} else  {
+	 		throw new IllegalArgumentException("Please provide valid city name or zipcode");
 		}
-		return false;
 	}
 	
 }

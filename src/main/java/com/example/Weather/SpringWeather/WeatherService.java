@@ -32,8 +32,12 @@ public class WeatherService {
 	RestClient restClient;
 	
 	public WeatherResponseResource cityWeatherReport(String cityName) {
-		
-		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + ",us&APPID=15dd8deaa5771ca36e3ca578f3c9773a";
+		String url;
+		if(cityName.matches("[a-zA-Z]+")) {
+			url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + ",us&APPID=15dd8deaa5771ca36e3ca578f3c9773a";
+		} else {
+			url = "http://api.openweathermap.org/data/2.5/weather?zip=" + cityName + ",us&APPID=15dd8deaa5771ca36e3ca578f3c9773a";
+		}
 		StringBuilder result = restClient.doGet(url);
 		ExternalResponseResource externalResponse = deserialize.jsonToObject(result);
 		WeatherResponseResource weatherResponse = mapper.mappingExternalResponseToWeatherResponse(externalResponse);

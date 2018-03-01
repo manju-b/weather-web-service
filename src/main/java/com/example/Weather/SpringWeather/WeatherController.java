@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,22 +29,18 @@ public class WeatherController {
 	
 	@RequestMapping(value = "/Weather", method = RequestMethod.GET)
 	public String index() {
-		throw new IllegalArgumentException("Please provide cityname");
+		throw new IllegalArgumentException("Please provide cityname or zipcode");
 	}
 	
 	
 	@RequestMapping(value = "/Weather/{cityName}", method = RequestMethod.GET) 
 	public WeatherResponseResource getWeatherReport(@PathVariable("cityName") String cityName) {
-		
-	 	if(cityName.matches("[a-zA-Z]+")){
+	 	if(cityName.matches("[a-zA-Z]+") || cityName.matches("^[0-9]*$")){
 	 		WeatherResponseResource response = weatherService.cityWeatherReport(cityName);
-	 		if(response.isEmpty()) {
-		 		throw new IllegalArgumentException("Please provide valid city name");
-	 		} else {
-	 			return response;
-	 		}
+	 		response.validate();
+	 		return response;
 	 	} else {
-	 		throw new IllegalArgumentException("Please provide valid city name");
+	 		throw new IllegalArgumentException("Please provide valid city name or zipcode");
 	 	}
 	}
 }

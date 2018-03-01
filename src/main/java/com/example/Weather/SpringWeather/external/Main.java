@@ -1,6 +1,5 @@
 package com.example.Weather.SpringWeather.external;
 
-import org.springframework.stereotype.Component;
 
 public class Main {
 	
@@ -27,7 +26,7 @@ public class Main {
 		return temp;
 	}
 
-	public void setTemp(int temp) {
+	public void setTemp(double temp) {
 		this.temp = temp;
 	}
 

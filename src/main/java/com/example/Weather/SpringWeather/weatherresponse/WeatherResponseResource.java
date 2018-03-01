@@ -47,7 +47,7 @@ public class WeatherResponseResource {
 	}
 	
 	public void validate() {
-		if(description != null || speed != 0 || temp != 0 || name != null) {
+		if(!(description.isEmpty()) || speed != 0 || temp != 0 || !(name.isEmpty())) {
 			
 		} else  {
 	 		throw new IllegalArgumentException("Please provide valid city name or zipcode");

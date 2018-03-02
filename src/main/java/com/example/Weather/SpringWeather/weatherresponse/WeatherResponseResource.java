@@ -53,5 +53,13 @@ public class WeatherResponseResource {
 	 		throw new IllegalArgumentException("Please provide valid city name or zipcode");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "WeatherResponseResource [description=" + description + ", speed=" + speed + ", temp=" + temp + ", name="
+				+ name + "]";
+	}
+	
+	
 	
 }

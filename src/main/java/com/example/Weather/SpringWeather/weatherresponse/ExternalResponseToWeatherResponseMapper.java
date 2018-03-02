@@ -13,7 +13,7 @@ public class ExternalResponseToWeatherResponseMapper {
 		WeatherResponseResource weatherResponse = new WeatherResponseResource();
 		if(externalResponse != null) {
 			//check to avoid null pointer exception
-			if(externalResponse.getWeather() != null && externalResponse.getWeather().get(0) != null) {
+			if(externalResponse.getWeather() != null && !(externalResponse.getWeather().isEmpty())) {
 				weatherResponse.setDescription(externalResponse.getWeather().get(0).getDescription());
 			}
 			if(externalResponse.getWind() != null) {

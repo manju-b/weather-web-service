@@ -6,6 +6,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.Weather.SpringWeather.weatherresponse.WeatherResponseResource;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 @RunWith(SpringRunner.class)
@@ -13,10 +14,14 @@ public class WeatherResponseResourceTest {
 
 	WeatherResponseResource wrr;
 	
+	@Before
+	public void setUp() {
+		wrr = new WeatherResponseResource();
+	}
+	
 	@Test
 	public void testValidateMethodWith_ValidInput() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("clear sky");
 			wrr.setName("sunnyvale");
 			wrr.setSpeed(210.76);
@@ -30,7 +35,6 @@ public class WeatherResponseResourceTest {
 	@Test
 	public void testValidateMethodWith_ValidInput_WhichHasDesciptionFieldAsEmpty() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("");
 			wrr.setName("sunnyvale");
 			wrr.setSpeed(210.76);
@@ -44,7 +48,6 @@ public class WeatherResponseResourceTest {
 	@Test
 	public void testValidateMethodWith_ValidInput_WhichHasNameFieldAsEmpty() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("clear sky");
 			wrr.setName("");
 			wrr.setSpeed(210.76);
@@ -58,7 +61,6 @@ public class WeatherResponseResourceTest {
 	@Test
 	public void testValidateMethodWith_ValidInput_WhichHasSpeedFieldAsDefaultValue() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("clear sky");
 			wrr.setName("sunnyvale");
 			wrr.setSpeed(0);
@@ -72,7 +74,6 @@ public class WeatherResponseResourceTest {
 	@Test
 	public void testValidateMethodWith_ValidInput_WhichHasTempFieldAsDefaultValue() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("clear sky");
 			wrr.setName("sunnyvale");
 			wrr.setSpeed(210.76);
@@ -86,7 +87,6 @@ public class WeatherResponseResourceTest {
 	@Test
 	public void testValidateMethodWith_InvalidInput() {
 		try {
-			wrr = new WeatherResponseResource();
 			wrr.setDescription("");
 			wrr.setName("");
 			wrr.setSpeed(0);

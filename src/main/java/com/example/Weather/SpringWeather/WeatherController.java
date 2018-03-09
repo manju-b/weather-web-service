@@ -29,7 +29,7 @@ public class WeatherController {
 	
 	@RequestMapping(value = "/Weather", method = RequestMethod.GET)
 	public String index() {
-		throw new IllegalArgumentException("Please provide cityname or zipcode");
+		return "Please provide cityname or zipcode to know city weather details";
 	}
 	
 	

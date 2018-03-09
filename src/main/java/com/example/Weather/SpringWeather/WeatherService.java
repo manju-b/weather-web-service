@@ -1,16 +1,6 @@
 package com.example.Weather.SpringWeather;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.codehaus.jackson.map.DeserializationConfig.Feature;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +9,6 @@ import com.example.Weather.SpringWeather.external.ExternalResponseResourceDeseri
 import com.example.Weather.SpringWeather.httpclient.RestClient;
 import com.example.Weather.SpringWeather.weatherresponse.ExternalResponseToWeatherResponseMapper;
 import com.example.Weather.SpringWeather.weatherresponse.WeatherResponseResource;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Service
 public class WeatherService {
